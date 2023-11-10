@@ -1,8 +1,9 @@
 import {GoalModel} from "../models/goalModel.ts";
-import {type FC} from "react";
+import {type FC, type PropsWithChildren} from "react";
 
-const CourseGoal:FC<GoalModel> = ({id,title,children}) => {
-    console.log(id)
+
+type  CourseGoalProps = PropsWithChildren<GoalModel>;
+const CourseGoal:FC<CourseGoalProps> = ({title,children}) => {
     return (
         <article>
             <div>
