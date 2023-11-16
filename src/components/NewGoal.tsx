@@ -19,8 +19,12 @@ const NewGoal:FC<NewGoalProps> = ({onAdd}) => {
         if (goal && goal.title?.trim().length === 0 || goal.description?.trim().length === 0) {
             return;
         }
-
-        onAdd(goal);
+        onAdd({...goal,id: Math.random()} as GoalModel);
+        setGoal({
+            id: 0,
+            title: '',
+            description: ''
+        })
     }
 
     return (
