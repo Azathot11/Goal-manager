@@ -1,16 +1,23 @@
-import {GoalModel} from "../models/goalModel.ts";
-import {type FC, type PropsWithChildren} from "react";
+import { FC, PropsWithChildren } from "react";
+import { GoalModel } from "../models/goalModel.ts";
 
+type CourseGoalProps = PropsWithChildren<GoalModel>;
 
-type  CourseGoalProps = PropsWithChildren<GoalModel>;
-const CourseGoal:FC<CourseGoalProps> = ({title,children}) => {
+const CourseGoal: FC<CourseGoalProps> = ({ title, onDelete, id, children }) => {
+    const deleteFunc = () => {
+        if (onDelete) {
+            onDelete(id);
+        }
+    };
     return (
         <article>
             <div>
-                <h2 className={'text-red-500'}>{title}</h2>
+                <h2 className="text-red-500">{title}</h2>
                 {children}
             </div>
-            <button type={'button'}>DELETE</button>
+            <button type="button" onClick={deleteFunc}>
+                DELETE
+            </button>
         </article>
     );
 };
